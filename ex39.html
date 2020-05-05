@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Переключатели Привязка к объекту</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+</head>
+<body>
+<div id="app" class="col-md-4">
+    <template v-for="(user,key) in users">
+        <input v-bind:id="componentName + key" type="radio" v-bind:value="user" v-model="selectedUser">
+        <label v-bind:for="componentName + key">{{user.name}}</label><br>
+    </template>
+    <span v-if="selectedUser!==null">Выбрано: {{selectedUser.name}} - {{selectedUser.age}}</span>
+</div>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            componentName: 'employer',
+            users:[
+                {name:'Tom', age:22},
+                {name:'Bob', age:25},
+                {name:'Sam', age:28},
+                {name:'Alice', age:26}
+            ],
+            selectedUser:null
+        }
+    });
+</script>
+
+</body>
+</html>

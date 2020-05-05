@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список с одиночным выбором</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+</head>
+<body>
+<div id="app">
+    <select v-model="user" v-bind:style="cmpStyle">
+        <option>Tom</option>
+        <option>Bob</option>
+        <option>Sam</option>
+    </select>
+    <div v-if:="selectedUser!==null">Выбрано: {{user}}</div>
+</div>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            selectedUser: null,
+            user:'',
+            cmpStyle: {width: '200px'}
+        }
+    });
+</script>
+
+</body>
+</html>

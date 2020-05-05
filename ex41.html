@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список с множественным выбором</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+</head>
+<body>
+<div id="app">
+    <select v-model="users" v-bind:style="cmpStyle" multiple>
+        <option>Tom</option>
+        <option>Bob</option>
+        <option>Sam</option>
+        <option>Alice</option>
+    </select>
+    <div v-if="selectedUsers!==false">Выбрано: {{users}}</div>
+</div>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+
+            users:[],
+            cmpStyle: {width: '200px'}
+        },
+        computed:{
+            selectedUsers: function () {
+                if(this.users.length){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

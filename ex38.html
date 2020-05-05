@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Переключатели Привязка к объекту</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+</head>
+<body>
+<div id="app">
+    <template v-for="(value,key) in radio">
+        <input v-bind:value="value" v-bind:id="comName+key" type="radio" v-model="user" v-on:click="selected"/>
+        <label v-bind:for="comName+key">{{value.name}}</label><br>
+    </template>
+    <span v-show="hasSelectedUser">Выбрано: Имя: {{ user.name }}, возраст: {{user.age}}</span>
+</div>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            comName: 'employer',
+            hasSelectedUser: false,
+            radio:[
+                {name:'Tom',age:25},
+                {name:'Bob',age:22},
+                {name:'Sam',age:26},
+                {name:'Den',age:31},
+                ],
+            user:''
+        },
+        methods:{
+            selected:function(){
+                console.log('selected pushed');
+                this.hasSelectedUser = true;
+            }
+        }
+
+
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Изучаем Vue.js</title>
+    <meta charset="utf-8" />
+    <style>
+        .region{
+            background-color: #999;
+            width: 50px;
+            height: 50px;
+            display: inline-block;
+            margin: 10px;
+            border-radius: 10px;
+        }
+        .active{
+            background-color:red;
+        }
+        .green{
+            background-color:green;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div class="region" v-bind:class="{active: isActive}" v-on:click="isActive=!isActive"></div>
+    <div class="region" v-bind:class="{green: !isActive}" v-on:click="isActive=!isActive"></div>
+</div>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {isActive : false}
+    });
+</script>
+</body>
+</html>

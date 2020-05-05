@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Компоненты Vue.js Миксины</title>
+    <meta charset="utf-8" />
+    <style type="text/css">
+        .cmp {margin: 10px;}
+    </style>
+</head>
+<body>
+<div id="app">
+    <div class="cmp"><light></light></div>
+    <div class="cmp"><enabled1></enabled1></div>
+    <div class="cmp"><enabled2></enabled2></div>
+</div>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    var toggleMixin = {
+        data: function(){
+            return { state: true, on: "ON", off: "OFF"}
+        },
+        methods:{
+            toggle: function(){
+                this.state= !this.state;
+            }
+        },
+    };
+    Vue.component('light', {
+        template: `<div><h3>{{header}}</h3>
+            <button v-on:click="toggle" v-show="state">{{on}}</button>
+            <button v-on:click="toggle" v-show="!state">{{off}}</button>
+        </div>`,
+        mixins:[toggleMixin],
+        computed:{
+            header(){
+                return this.state==true?"Свет включен":"Свет выключен";
+            }
+        }
+    });
+    Vue.component('enabled1', {
+        template: `<div>Включить функцию
+            <button v-on:click="toggle" v-show="state">{{on}}</button>
+            <button v-on:click="toggle" v-show="!state">{{off}}</button>
+        </div>`,
+        mixins:[toggleMixin]
+    });
+    Vue.component('enabled2', {
+        template: `<div>Включить параметр
+            <button v-on:click="toggle" v-show="state">{{on}}</button>
+            <button v-on:click="toggle" v-show="!state">{{off}}</button>
+        </div>`,
+        mixins:[toggleMixin]
+    });
+    new Vue({
+        el: "#app"
+    });
+</script>
+</body>
+</html>

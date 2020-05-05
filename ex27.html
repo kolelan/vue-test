@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Работа с массивами. Добавление и удаление</title>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="(phone,index) in phones">
+            <p>{{index+1}} {{ phone }}</p>
+    </ul>
+    <input type="text" v-model="newPhone" />
+    <input type="number" v-model="newIndex" />
+    <button v-on:click="updateList">Обновить</button>
+</div>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            newPhone: '',
+            phones: ['iPhone 7', 'Galaxy S8', 'Nokia N8', 'Xiaomi Mi6'],
+            newIndex: 0
+        },
+        methods:{
+            updateList: function(){
+                var index = this.newIndex ;
+                Vue.set(this.phones, index, this.newPhone);
+                this.newIndex = this.phones.length;
+            }
+        },
+        beforeMount: function(){
+                this.newIndex = this.phones.length;
+
+        }
+    });
+</script>
+</body>
+</html>

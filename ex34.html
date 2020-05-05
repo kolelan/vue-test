@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Привязка флажков к логическому значению и свои собственные значения для обоих состояний</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+</head>
+<body>
+<div id="app">
+    <input type="checkbox" v-model="light" v-bind:true-value="on" v-bind:false-value="off" />
+    <span v-if="light===on">Выключить</span>
+    <span v-else>Включить</span>
+</div>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            on: true,
+            off:false,
+            light: true
+        }
+    });
+</script>
+</body>
+</html>

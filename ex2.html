@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Изучаем Vue.js</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+<div id="app">
+    <p>{{name}}</p>
+    <p>{{welcome()}}</p>
+    <p>Name: {{displayName()}}</p>
+    <p>Factorial of {{message}} is equal to {{factorial}}</p>
+    <input type="text" v-on:input="setMessage" />
+</div>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data:{name: 'Tom', age:25, message: 6,factorial:720},
+        methods:{
+            welcome: function(){
+                return "Welcome";
+            },
+            displayName: function() {
+                return this.name;
+            },
+            fnFactorial:function(n){
+                var result=1;
+                for(var i=1; i<=n;i++){
+                    result = result * i;
+                }
+                return result;
+            },
+            setMessage: function(event){
+                this.message = event.target.value;
+                this.factorial = this.fnFactorial(this.message);
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <title>refs и управление html-элементами</title>
+    <meta charset="utf-8"/>
+</head>
+<body>
+<p class="description">С помощью параметра refs можно ссылаться на определенный html-элемент из шаблона и управлять
+    им.</p>
+<p>С помощью атрибута ref для html-элемента устанавливается ключ, через который потом можно ссылаться на этот элемент.</p>
+<code><h2 ref="header">Hello world!</h2></code>
+<p>В методах объекта Vue можно обратиться к элементу по установленному ключу через объект <strong>$refs</strong>:</p>
+<div id="app">
+    <h2 ref="header">{{backMessage}}</h2>
+    <button v-on:click="change">Change</button>
+    <button v-on:click="back">Back</button>
+</div>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    var vm1 = new Vue({
+        el: "#app",
+        data: {
+          backMessage: 'Hello world!'
+        },
+        methods: {
+            change: function () {
+                this.$refs.header.innerText = "Welcome to Vue.js";
+            },
+            back: function () {
+                this.$refs.header.innerText = this.backMessage;
+            }
+        }
+    });
+</script>
+</body>
+</html>

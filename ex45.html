@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Модификатор .lazy</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="https://unpkg.com/vue"></script>
+
+</head>
+<body>
+<div id="app" class="col-md-4">
+    <input type="text" v-model.lazy.trim="name" class="form-control"/><br>
+    <input v-model.lazy.number="age" type="number"><br>
+    <span v-if="name!==''">Введено имя: {{name}}</span><br>
+    <span v-if="age>0">Введен возраст: {{age}}</span>
+</div>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            name:'',
+            age:0
+        }
+    });
+</script>
+</body>
+</html>

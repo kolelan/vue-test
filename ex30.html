@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Работа с массивами. Фильтрация через вычисляемое свойство</title>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+<div id="app">
+    <p><input type="text" v-model="searched" /></p>
+    <ul>
+        <li v-for="phone in filteredList">
+            <p>{{ phone.title }} - {{ phone.company }}</p>
+    </ul>
+</div>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            searched: '',
+            phones: [
+                {title:'iPhone 7', company:'Apple'},
+                {title:'iPhone 6S', company:'Apple'},
+                {title:'Galaxy S8', company:'Samsung'},
+                {title:'Galaxy S7 Edge', company:'Samsung'},
+                {title:'Nokia N8', company:'HMD Global'}]
+        },
+        computed:{
+            filteredList: function(){
+                var searched = this.searched;
+                return this.phones.filter(function (elem) {
+
+                    if(searched==='') {
+                        return true;
+                    }else {
+                        if(elem.company.indexOf(searched) > -1 || elem.title.indexOf(searched) > -1) return true;
+                    }
+                })
+            }
+        }
+    });
+</script>
+</body>
+</html>

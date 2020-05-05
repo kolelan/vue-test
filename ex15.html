@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Работа с объектом Vue</title>
+    <meta charset="utf-8"/>
+</head>
+<body>
+<p class="description">Объект Vue является стандартным объектом JavaScript, с которым мы можем работать из остального
+    кода на js, в том числе и в других объектах Vue. </p>
+<p class="description">Также мы можем определять дополнительные свойства и методы у объекта извне, как и для любого
+    объекта JavaScript. Все свойства определяются вне объекта Vue, не будут реактивными и не будут автоматически
+    отслеживаться.</p>
+<div id="app1">
+    <input type="text" v-model="name"/>
+    <input type="number" v-model="age"/>
+    <p>{{name}} - {{age}} - {{position}}</p>
+</div>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    var vm1 = new Vue({
+        el: '#app1',
+        data: {name: 'Tom', age: 34}
+    });
+    // определение нового метода
+    vm1.setAge = function (value) {
+        vm1.age = value;
+    }
+    // определение нового свойства
+    vm1.position = "admin";
+    setTimeout(function () {
+        vm1.position = "moderator";
+    }, 3000);
+</script>
+</body>
+</html>

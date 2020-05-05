@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Условный рендеринг и работа с массивами Директива v-if</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+<div id="app">
+    <p v-if="visible">Первый параграф</p>
+    <p v-else>Второй параграф</p>
+    <button v-on:click="visible=!visible">{{visible?'Скрыть':'Показать'}}</button>
+</div>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            visible: true
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Компоненты Vue.js регистрация данных в глобальном компоненте через data</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+<div id="app">
+    <counter></counter>
+</div>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    Vue.component('counter', {
+        data: function(){
+            return {
+                header: 'Counter Program'
+            }
+        },
+        template:'<div><h2>{{header}}</h2></div>'
+    });
+    new Vue({
+        el: "#app"
+    });
+</script>
+</body>
+</html>

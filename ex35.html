@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Привязка флажков к массиву</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+</head>
+<body>
+<div id="app">
+    <input id="1" type="checkbox" value="Tom" v-model="selectedUsers">
+    <label for="1">C#</label><br>
+    <input id="2" type="checkbox" value="Bob" v-model="selectedUsers">
+    <label for="2">Bob</label><br>
+    <input id="3" type="checkbox" value="Sam" v-model="selectedUsers">
+    <label for="3">Sam</label><br>
+    <input id="4" type="checkbox" value="Alice" v-model="selectedUsers">
+    <label for="4">Alice</label><br>
+    <span>Выбрано: {{selectedUsers}}</span>
+</div>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            selectedUsers:[]
+        }
+    });
+</script>
+</body>
+</html>

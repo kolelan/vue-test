@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <title>Компоненты Vue.js Передача массивов через prop</title>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+    <div id="app">
+        <userslist :users="users"></userslist>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+        Vue.component('userslist', {
+            props: ["users"],
+            template: `<ul>
+                <li v-for="user in users">
+                    <p>Name: {{user.name}}</p>
+                    <p>Age: {{user.age}}</p>
+                </li>
+            </ul>`
+        });
+        new Vue({
+            el: "#app",
+            data: {
+                users: [{
+                    name: 'Tom',
+                    age: 18
+                },{
+                    name: 'Bob',
+                    age: 23
+                },{
+                    name: 'Alice',
+                    age: 21
+                }]
+            }
+        });
+    </script>
+    </body>
+</html>

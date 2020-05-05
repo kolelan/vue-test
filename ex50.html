@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Компоненты Vue.js Регистрация данных в локальном компоненте через data</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+<div id="app">
+    <counter></counter>
+</div>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    var comp = {
+        template:'<div><h2>{{header}}</h2><p>{{content}}</p></div>',
+        data: function(){
+            return {
+                header: 'Counter Program',
+                content: 'Registration data, Local component'
+            }
+        }
+    };
+    new Vue({
+        el: "#app",
+        components:{
+            'counter':comp
+        }
+    });
+</script>
+</body>
+</html>
